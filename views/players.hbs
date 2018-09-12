@@ -1,0 +1,17 @@
+<table class="mdl-data-table mdl-data-table__cell--non-numeric jcs-centered-table" >
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>IP Address</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>{{#each player}}
+    <tr>
+      <td class="mdl-data-table__cell--non-numeric">{{username}}</td>
+      <td>{{ip}}</td>
+      <td>{{status}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>    

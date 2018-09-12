@@ -1,0 +1,35 @@
+<h4>All Missions</h4>
+<table class="mdl-data-table mdl-data-table__cell--non-numeric jcs-centered-table">
+  <thead>
+    <tr>
+      <th>Mission Name</th>
+      <th>Difficulty</th>
+    </tr>
+  </thead>
+  <tbody>{{#each missions}}
+    <tr>
+      <td class="mdl-data-table__cell--non-numeric">{{name}}</td>
+      <td>{{difficulty}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+<br><h4>In Cycle</h4>
+
+<table class="mdl-data-table mdl-data-table__cell--non-numeric jcs-centered-table">
+  <thead>
+    <tr>
+      <th>Mission Name</th>
+      <th>Difficulty</th>
+    </tr>
+  </thead>
+  <tbody>{{#each missions}}
+    {{#if inCycle}}
+    <tr>
+      <td class="mdl-data-table__cell--non-numeric">{{name}}</td>
+      <td>{{difficulty}}</td>
+    </tr>
+    {{/if}}
+    {{/each}}
+  </tbody>
+</table>
