@@ -24,4 +24,8 @@ module.exports = function (data, server) {
     else if (input.includes("<version")) {
         server.exec(`chat Not Yet Implemented`)
     }
+    // Returns stats
+    else if (input.includes("<stat")) {
+        server.exec(`chat Not Yet Implemented`)
+    }
 }
