@@ -20,4 +20,8 @@ module.exports = function (data, server) {
     else if (input.includes("<nextmap")) {
         server.exec(`chat Not Yet Implemented`)
     }
+    // Returns version
+    else if (input.includes("<version")) {
+        server.exec(`chat Not Yet Implemented`)
+    }
 }
