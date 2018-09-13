@@ -4,11 +4,13 @@ const server = new telnet();
 module.exports = {
     init() {
         server.on("data", function (data) {
-            if  (String(data).includes("is complete created")) {
+            if (String(data).includes("is complete created")) {
                 var r = /\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b/;
-                console.log(String(data).match(r)[0]);
+                let ip = String(data).match(r)[0];
+                let un = String(data).split(",")[2].replace(/\s+/g, '');
+                console.log(ip,un)
+                server.exec(`chat Welcome ${un} to JagerOne TO ${un}`)
             }
-            if  (String(data).includes("joins the game")) console.log("NEW PLAYER")
         });
         server.connect({
             host: "192.168.1.3",
