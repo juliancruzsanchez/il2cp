@@ -4,9 +4,9 @@ const server = new telnet();
 module.exports = {
     init() {
         server.on("data", function (data) {
-            if  (String(data).includes("complete created")) () => {
+            if  (String(data).includes("is complete created")) {
                 var r = /\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b/;
-                console.log(String(data).match(r)); console.log("NEW PLAYER")
+                console.log(String(data).match(r)[0]);
             }
             if  (String(data).includes("joins the game")) console.log("NEW PLAYER")
         });
