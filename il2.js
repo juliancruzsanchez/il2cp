@@ -1,17 +1,11 @@
 const telnet = require('telnet-client');
-
+const command = require("./commands")
 const server = new telnet();
 module.exports = {
     init() {
-        server.on("data", function (data) {
-            if (String(data).includes("is complete created")) {
-                var r = /\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b/;
-                let ip = String(data).match(r)[0];
-                let un = String(data).split(",")[2].replace(/\s+/g, '');
-                console.log(ip,un)
-                server.exec(`chat Welcome ${un} to JagerOne TO ${un}`)
-            }
-        });
+        server.on("data", (data) => {
+            command(data, server)
+        })
         server.connect({
             host: "192.168.1.3",
             port: 2003,
