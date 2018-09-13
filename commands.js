@@ -6,4 +6,10 @@ module.exports = function  (data, server) {
         console.log(ip,un)
         server.exec(`chat Welcome ${un} to JagerOne TO ${un}`)
     }
+    else if (String(data).includes("<tl")) {
+        server.exec(`chat Time Remaining:`)
+    }
+    else if (String(data).includes("<?")) {
+        server.exec(`help`)
+    }
 }

@@ -20,7 +20,6 @@ module.exports = {
         server.send("user\r", {}, (a, b) => {
             let fo = String(b).replace("\\u0020", "").replace("<consoleN>", "").replace(/<([1-9]*)>/i, "").split("\\n\r\n")
             fo.pop()
-            console.log(fo)
         })
     },
     getMissions() {
