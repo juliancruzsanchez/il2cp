@@ -1,6 +1,9 @@
 var fs = require('fs');
 let log = console.log;
-let f1 = fs.readFileSync('C:/il2/missions/Convoy.mis', 'utf8').toString();
+let config = require("./configParser")
+let f1 = fs.readFileSync(config.path+'/missions/Convoy.mis', 'utf8').toString();
+let desc = fs.readFileSync(config.path+'missions/Convoy.properties', 'utf8').toString();
+console.log(desc)
 let f2 = " \r\n" + f1
 let file = f2.split("\r\n");
 let mis = {};
