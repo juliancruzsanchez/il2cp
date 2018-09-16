@@ -3,13 +3,11 @@
   <thead>
     <tr>
       <th>Mission Name</th>
-      <th>Difficulty</th>
     </tr>
   </thead>
   <tbody>{{#each missions}}
     <tr>
-      <td class="mdl-data-table__cell--non-numeric">{{name}}</td>
-      <td>{{difficulty}}</td>
+      <td class="mdl-data-table__cell--non-numeric">{{this}}</td>
     </tr>
     {{/each}}
   </tbody>
@@ -23,13 +21,20 @@
       <th>Difficulty</th>
     </tr>
   </thead>
-  <tbody>{{#each missions}}
-    {{#if inCycle}}
+  <tbody>{{#each inCycle}}
     <tr>
-      <td class="mdl-data-table__cell--non-numeric">{{name}}</td>
-      <td>{{difficulty}}</td>
+      <td class="mdl-data-table__cell--non-numeric">{{this}}</td><td><button id="{{@index}}">Remove From Cycle</button></td>
     </tr>
-    {{/if}}
+    <script>
+  
+
+$('#{{@index}}').click(function(){
+    console.log('{{this}} clicked');
+    $.ajax({url: 'test1{{this}}', success:function(res){
+        console.log('server response is', res);
+    }});
+});
+</script>
     {{/each}}
   </tbody>
 </table>
