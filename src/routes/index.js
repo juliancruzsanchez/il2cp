@@ -1,7 +1,7 @@
 const express = require('express')
 const il2 = require("../il2")
 const fs = require('fs');
-let config = require("../configParser")
+let config = require("../il2/configParser")
 let p = (l) => {
   return l.replace(/\s+/g, '');
 
@@ -12,17 +12,17 @@ module.exports = {
     app.get('/', (request, response) => {
       response.render('home')
     })
-console.log()
+    console.log()
     app.get('/missions', (request, response) => {
-      fs.readdir(config.path+ "Missions/", function (err, files) {
+      fs.readdir(config.path + "Missions/", function (err, files) {
         response.render('missions', {
           missions: files.filter(str => {
             return str.includes(".mis");
           }),
           inCycle: config.missionsInCycle
         })
-    });
-     
+      });
+
     })
 
     app.get('/difficulty', (request, response) => {
@@ -32,7 +32,12 @@ console.log()
         let d_pre = data.split("\\n\r\n");
         d_pre.pop()
         for (let i in d_pre) {
-          let name = p(d_pre[i].trim().replace("\\t", "").replace('\\u0020', '').replace('\\t\\t', '').replace('\\t', '').replace('\\t', ''));
+          let name = p(d_pre[i].trim()
+            .replace("\\t", "")
+            .replace('\\u0020', '')
+            .replace('\\t\\t', '')
+            .replace('\\t', '')
+            .replace('\\t', ''));
           d_post[name.replace(/[0-1]/g, '')] = Number(name[name.length - 1]);
         }
         response.render('difficulty', {
@@ -44,14 +49,15 @@ console.log()
 
 
     })
+
     function arrayRemove(arr, value) {
 
-      return arr.filter(function(ele){
-          return ele != value;
+      return arr.filter(function (ele) {
+        return ele != value;
       });
-   
-   }
-   
+
+    }
+
     app.get('/commands', (request, response) => {
       response.render('commands')
     })
@@ -66,13 +72,13 @@ console.log()
       })
     });
     app.get("/test1:a", function (req, res) {
-    config.missionsInCycle =     arrayRemove(config.missionsInCycle, req.params.a)
-    fs.unlinkSync("config.json")
+      config.missionsInCycle = arrayRemove(config.missionsInCycle, req.params.a)
+      fs.unlinkSync("config.json")
       fs.writeFile("config.json", JSON.stringify(config), () => {})
-req.send(config.missionsInCycle)
+      req.send(config.missionsInCycle)
 
-    
- });
+
+    });
   }
 
 

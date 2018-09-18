@@ -16,7 +16,7 @@
 
  html, body {
     font-family: 'Roboto', 'Helvetica', sans-serif;
-  }  
+  }
  .jcs-centered-table tr ,  .jcs-centered-table th,  .jcs-centered-table td{
       text-align: left !important;
   }
@@ -81,7 +81,7 @@
             align-items: center;
     width: 100%;
   }
-  
+
   .demo-navigation {
     -webkit-flex-grow: 1;
         -ms-flex-positive: 1;
@@ -109,7 +109,7 @@
     color: rgba(255, 255, 255, 0.56);
     margin-right: 32px;
   }
-  
+
   .demo-content {
     max-width: 1080px;
   }
