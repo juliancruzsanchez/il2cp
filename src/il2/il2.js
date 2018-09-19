@@ -9,7 +9,7 @@ module.exports = {
     // Node.emitter.setMaxListeners(30)
     this.server.on("data", (data) => {
       command(data, this.server)
-    })
+    });
     this.server.connect({
       host: config.ip,
       port: config.port,
@@ -19,7 +19,7 @@ module.exports = {
     })
   },
   setDifficulty(diff) {
-    this.server.exec(`difficulty ${diff}`)
+    this.server.send(`difficulty ${diff}\r`)
   },
 
   getUsers() {
@@ -38,10 +38,11 @@ module.exports = {
     this.send("mission LOAD " + mis)
   },
   send(msg) {
-    this.server.exec(msg)
+    this.server.send(msg+"\r")
   },
   chat(msg, player) {
-    if (player == undefined) player = "ALL"
+    if (player == undefined) player = "ALL";
     this.send(`chat ${msg} TO ${player}`)
+    console.log(`chat ${msg} TO ${player}`)
   }
 }

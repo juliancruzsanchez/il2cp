@@ -4,7 +4,6 @@ const exphbs = require('express-handlebars');
 const app = express();
 const il2 = require("./il2/il2");
 const config = require("./il2/configParser");
-const lms = require("./il2/lastManStanding")
 app.engine('.hbs', exphbs({
   defaultLayout: 'main',
   extname: '.hbs',
@@ -24,5 +23,6 @@ cycle.startCycle();
 setInterval(function () {
   cycle.nextMission();
 }, config.missionInterval * 1000 * 60);
-
+const lms = require("./il2/lastManStanding")
+lms.leaderBoard()
 app.listen(3000)
