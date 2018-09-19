@@ -35,6 +35,13 @@ module.exports = {
     })
   },
   loadMission(mis) {
-    this.server.exec("mission LOAD " + mis)
+    this.send("mission LOAD " + mis)
+  },
+  send(msg) {
+    this.server.exec(msg)
+  },
+  chat(msg, player) {
+    if (player == undefined) player = "ALL"
+    this.send(`chat ${msg} TO ${player}`)
   }
 }

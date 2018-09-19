@@ -4,24 +4,25 @@ const exphbs = require('express-handlebars');
 const app = express();
 const il2 = require("./il2/il2");
 const config = require("./il2/configParser");
+const lms = require("./il2/lastManStanding")
 app.engine('.hbs', exphbs({
-    defaultLayout: 'main',
-    extname: '.hbs',
-    layoutsDir: path.join(__dirname, 'views/layouts')
+  defaultLayout: 'main',
+  extname: '.hbs',
+  layoutsDir: path.join(__dirname, 'views/layouts')
 
 }));
-app.use(express.static( path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.set('view engine', '.hbs');
 app.set('views', path.join(__dirname, 'views'));
 require('./routes')
-    .init(app);
+  .init(app);
 il2.init();
 const cycle = require("./il2/cycleManager");
 cycle.startCycle();
 setInterval(function () {
-    cycle.nextMission();
+  cycle.nextMission();
 }, config.missionInterval * 1000 * 60);
 
 app.listen(3000)
