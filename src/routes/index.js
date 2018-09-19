@@ -1,5 +1,5 @@
 const express = require('express')
-const il2 = require("../il2")
+const il2 = require("../il2/il2.js")
 const fs = require('fs');
 let config = require("../il2/configParser")
 let p = (l) => {
