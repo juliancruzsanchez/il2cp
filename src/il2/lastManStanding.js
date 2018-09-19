@@ -15,5 +15,8 @@ module.exports = {
       il2.chat(`+---+------+----------------+-------+`)
       il2.chat(`| 5 |      |                |       |`)
       il2.chat(`+---+------+----------------+-------+`)
+  },
+  planesLeftAlert(x){
+    il2.chat(`You have ${x} planes left!`)
   }
 }

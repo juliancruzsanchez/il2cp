@@ -18,11 +18,10 @@ app.set('views', path.join(__dirname, 'views'));
 require('./routes')
   .init(app);
 il2.init();
+
 const cycle = require("./il2/cycleManager");
 cycle.startCycle();
 setInterval(function () {
   cycle.nextMission();
 }, config.missionInterval * 1000 * 60);
-const lms = require("./il2/lastManStanding")
-lms.leaderBoard()
 app.listen(3000)
