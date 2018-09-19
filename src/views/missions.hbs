@@ -23,14 +23,16 @@
   </thead>
   <tbody>{{#each inCycle}}
     <tr>
-      <td class="mdl-data-table__cell--non-numeric">{{this}}</td><td><button id="{{@index}}">Remove From Cycle</button></td>
+      <td class="mdl-data-table__cell--non-numeric">{{this}}</td><td><!-- Raised button -->
+<button class="mdl-button mdl-js-button mdl-button--raised">
+ id="{{@index}}">Remove From Cycle</button></td>
     </tr>
     <script>
 
 
 $('#{{@index}}').click(function(){
     console.log('{{this}} clicked');
-    $.ajax({url: 'test1{{this}}', success:function(res){
+    $.ajax({url: 'removeCycle{{this}}', success:function(res){
         console.log('server response is', res);
     }});
 });
