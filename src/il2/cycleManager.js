@@ -1,6 +1,6 @@
 const il2 = require("./il2.js")
 const fs = require("fs")
-const config = require("../configParser")
+const config = require("./configParser")
 
 let currentMission = 0;
 
@@ -8,7 +8,7 @@ let currentMission = 0;
 
 module.exports = {
   startCycle() {
-    fs.readdir(config.path + "Missions/",  (err, file) => {
+    fs.readdir(config.path + "Missions/", (err, file) => {
       let a = file.filter(str => {
         if (str.includes(".mis") && config.missionsInCycle.includes(str)) {
 
