@@ -100,7 +100,7 @@
     color: rgba(255, 255, 255, 0.56);
     font-weight: 500;
   }
-  .demo-layout .demo-navigation .mdl-navigation__link:hover {
+  .mdl-layout__drawer .mdl-navigation .mdl-navigation__link:hover {
     background-color: rgb(38, 50, 56);
     color: rgb(236, 239, 241);
   }
