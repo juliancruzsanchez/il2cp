@@ -10,10 +10,15 @@ module.exports = {
   init(app) {
     app.get('/', (request, response) => {
       response.render('home', {
-        il2: {ip: config.ip, port: config.port}
+        il2: {
+          ip: config.ip,
+          port: config.port
+        }
       })
     })
-    console.log()
+    app.get('/help', (req, res) => {
+      res.render('help')
+    })
     app.get('/missions', (request, response) => {
       fs.readdir(config.path + "Missions/", function (err, files) {
         response.render('missions', {
@@ -30,7 +35,12 @@ module.exports = {
         let d_pre = data.split("\\n\r\n");
         d_pre.pop()
         for (let i in d_pre) {
-          let name = p(d_pre[i].trim().replace("\\t", "").replace('\\u0020', '').replace('\\t\\t', '').replace('\\t', '').replace('\\t', ''));
+          let name = p(d_pre[i].trim()
+            .replace("\\t", "")
+            .replace('\\u0020', '')
+            .replace('\\t\\t', '')
+            .replace('\\t', '')
+            .replace('\\t', ''));
           d_post[name.replace(/[0-1]/g, '')] = Number(name[name.length - 1]);
         }
         response.render('difficulty', {
