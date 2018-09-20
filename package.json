@@ -2,11 +2,7 @@
   "name": "il2cp",
   "version": "1.0.0",
   "description": "\"# il2cp\"  \"# il2cp\"  \"# il2cp\"",
-  "main": "./src/index.js",
-  "scripts": {
-    "build": "babel src/ -d lib/",
-    "prepublish": "yarn run build"
-  },
+  "main": "./il2cp.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/juliancruzsanchez/il2cp.git"
