@@ -72,12 +72,12 @@ program.command('setup')
         console.log(chalk.yellow("Awesome! Interval Saved!\n"));
         let cf = process.env.APPDATA + "\\IL2 Control Panel\\config.json";
         const config = require("./il2/configParser");
-        config.ip = String(ip)
-        config.port = Number(port)
-        config.missionInterval = Number(missionInterval)
+        config.ip = ip
+        config.port = port
+        config.missionInterval =missionInterval
         fs.unlinkSync(cf)
-        fs.writeFile(cf, JSON.stringify(config), () => {})
-        return process.exit(22);
+        fs.writeFile(cf, JSON.stringify(config), () => {        return process.exit(22);
+        })
       })
     })
   });
