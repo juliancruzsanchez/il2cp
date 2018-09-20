@@ -1,32 +1,3 @@
-<h4>All Missions</h4>
-<table class="mdl-data-table mdl-data-table__cell--non-numeric jcs-centered-table">
-  <thead>
-    <tr>
-      <th>Mission Name</th>
-    </tr>
-  </thead>
-  <tbody>{{#each missions}}
-      <tr>
-        <td class="mdl-data-table__cell--non-numeric">{{this}}</td>
-        <td>
-          <button class="mdl-button mdl-js-button mdl-button--raised" id="{{@index}}-add">Add to Cycle</button></td>
-      </tr>
-      <script>
-        $('#{{@index}}-add').click(function () {
-          console.log('{{this}} clicked');
-          $.ajax({
-            url: 'addMission{{this}}',
-            success: function (res) {
-              window.location.reload()
-            }
-          });
-        });
-
-      </script>
-    {{/each}}
-  </tbody>
-</table>
-<br>
 <h4>In Cycle</h4>
 <table class="mdl-data-table mdl-data-table__cell--non-numeric jcs-centered-table">
   <thead>
@@ -45,6 +16,34 @@
           console.log('{{this}} clicked');
           $.ajax({
             url: 'removeMission{{this}}',
+            success: function (res) {
+              window.location.reload()
+            }
+          });
+        });
+
+      </script>
+    {{/each}}
+  </tbody>
+</table><br>
+<h4>All Missions</h4>
+<table class="mdl-data-table mdl-data-table__cell--non-numeric jcs-centered-table">
+  <thead>
+    <tr>
+      <th>Mission Name</th>
+    </tr>
+  </thead>
+  <tbody>{{#each missions}}
+      <tr>
+        <td class="mdl-data-table__cell--non-numeric">{{this}}</td>
+        <td>
+          <button class="mdl-button mdl-js-button mdl-button--raised" id="{{@index}}-add">Add to Cycle</button></td>
+      </tr>
+      <script>
+        $('#{{@index}}-add').click(function () {
+          console.log('{{this}} clicked');
+          $.ajax({
+            url: 'addMission{{this}}',
             success: function (res) {
               window.location.reload()
             }
