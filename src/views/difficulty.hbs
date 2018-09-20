@@ -1,17 +1,17 @@
 <style> #switch1 {
     margin: 100px;}
-</style><h3>Difficulty</h3>
-
+</style>
+<h3>Difficulty</h3>
 <ul class="demo-list-control mdl-list">
-    {{#each diff}}
-  <li class="mdl-list__item">
-    <span class="mdl-list__item-primary-content">
-{{@key}}    </span>
-    <span class="mdl-list__item-secondary-action">
-      <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="list-switch-1">
-        <input type="checkbox" id="list-switch-1" class="mdl-switch__input"  {{#if this}}checked{{/if}} />
-      </label>
-    </span>
-  </li>
-{{/each}}
+  {{#each diff}}
+    <li class="mdl-list__item">
+      <span class="mdl-list__item-primary-content">
+        {{@key}} </span>
+      <span class="mdl-list__item-secondary-action">
+        <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="list-switch-1">
+          <input type="checkbox" id="list-switch-1" class="mdl-switch__input" {{#if this}} checked{{/if}} />
+        </label>
+      </span>
+    </li>
+  {{/each}}
 </ul>

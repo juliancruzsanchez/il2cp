@@ -1,6 +1,5 @@
 const il2 = require("./il2");
 module.exports = {
-
   leaderBoard(player) {
     console.log(`+---+------+----------------+-------+`)
     console.log(`| # | Team | Player         | Kills |`)
