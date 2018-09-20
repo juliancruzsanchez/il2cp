@@ -38,7 +38,7 @@ module.exports = {
     this.send(`chat ${msg} TO ${player}`)
     console.log(`chat ${msg} TO ${player}`)
   },
-  dotRange(opt) {
+  dotRange(opt = {foe: {color, dot, range, type, id, name}, friendly:  {color, dot, range, type, id, name}}) {
     this.send(`mp_dotrange FOE ${opt.foe.color} ${opt.foe.dot} ${opt.foe.range} ${opt.foe.type} ${opt.foe.id} ${opt.foe.name}`)
     this.send(`mp_dotrange FRIENDLY ${opt.friendly.color} ${opt.friendly.dot} ${opt.friendly.range} ${opt.friendly.type} ${opt.friendly.id} ${opt.friendly.name}`)
   }
