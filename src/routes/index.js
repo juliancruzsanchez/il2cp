@@ -9,7 +9,9 @@ let cf = process.env.APPDATA + "\\IL2 Control Panel\\config.json";
 module.exports = {
   init(app) {
     app.get('/', (request, response) => {
-      response.render('home')
+      response.render('home', {
+        il2: {ip: config.ip, port: config.port}
+      })
     })
     console.log()
     app.get('/missions', (request, response) => {
