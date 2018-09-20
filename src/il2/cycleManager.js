@@ -10,7 +10,9 @@ module.exports = {
           return true
         } else return false
       });
-      il2.loadMission(a[currentMission])
+      if (config.missionsInCycle[currentMission] !== undefined) {il2.loadMission(a[currentMission])} else {
+        console.warn("No Missions Found In Cycle!")
+      }
     })
   },
   nextMission() {
