@@ -28,6 +28,7 @@ module.exports = {
     })
   },
   loadMission(mis) {
+    this.send("mission END")
     this.send("mission LOAD " + mis)
   },
   send(msg) {

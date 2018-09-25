@@ -1,3 +1,6 @@
+#!/usr/bin/env node
+
+
 const path = require('path');
 const express = require('express');
 const exphbs = require('express-handlebars');
@@ -31,13 +34,13 @@ function test(cb) {
       } catch (e) {
         console.log(e)
         fs.copyFileSync('./config.json', file)
-        test()
+        test(()=> {})
       }
     }
   } catch (e) {
     console.log(e)
     fs.mkdirSync(process.env.APPDATA + "\\IL2 Control Panel")
-    test()
+    test(() => {})
   }
 }
 
@@ -45,12 +48,13 @@ function run() {
   handlebarsInit()
   const config = require("./il2/configParser");
   const il2 = require("./il2/il2");
+  require('child_process').execFile(config.path +"/il2server.exe")
   il2.init();
   const cycle = require("./il2/cycleManager");
   cycle.startCycle();
   setInterval(() => {
     cycle.nextMission();
-  }, config.missionInterval * 1000 * 60);
+  }, config.missionInterval * 60000);
   require('./routes')
     .init(app);
   app.listen(3000)
@@ -72,9 +76,11 @@ program.command('setup')
         console.log(chalk.yellow("Awesome! Interval Saved!\n"));
         let cf = process.env.APPDATA + "\\IL2 Control Panel\\config.json";
         const config = require("./il2/configParser");
-        config.ip = ip
-        config.port = port
-        config.missionInterval =missionInterval
+        config.ip = ip;
+        config.port = port;
+        config.missionInterval = missionInterval;
+        console.log(chalk.bold.green("Saved\n Goto http://localhos:3000/setup"))
+
         fs.unlinkSync(cf)
         fs.writeFile(cf, JSON.stringify(config), () => {        return process.exit(22);
         })
@@ -85,7 +91,13 @@ program.command('start')
   .alias('launch')
   .description(chalk.yellow('Starts the program'))
   .action((cmd, options) => {
-    test(run())
+    try {
+      test(run)
+
+    } catch (rr){
+      test(run)
+
+    }
   })
 
 program.parse(process.argv);

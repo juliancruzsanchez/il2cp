@@ -81,5 +81,8 @@ module.exports = {
       fs.writeFile(cf, JSON.stringify(config), () => {})
       res.send(config.missionsInCycle)
     });
+    app.get("/setup", (req, res) => {
+      res.render("setup")
+    })
   }
 }

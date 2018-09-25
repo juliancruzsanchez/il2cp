@@ -9,7 +9,7 @@
         {{@key}} </span>
       <span class="mdl-list__item-secondary-action">
         <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="list-switch-1">
-          <input type="checkbox" id="list-switch-1" class="mdl-switch__input" {{#if this}} checked{{/if}} />
+          <input type="checkbox" id="list-switch-1" class="mdl-switch__input" onclick=alert({{@key}}{{this}}) {{#if this}} checked{{/if}} />
         </label>
       </span>
     </li>
