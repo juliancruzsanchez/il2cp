@@ -2,7 +2,6 @@
   "name": "il2cp",
   "version": "1.0.0",
   "description": "\"# il2cp\"  \"# il2cp\"  \"# il2cp\"",
-  "main": "./il2cp.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/juliancruzsanchez/il2cp.git"
@@ -22,10 +21,8 @@
     "express-handlebars": "^3.0.0",
     "telnet-client": "^0.15.8"
   },
-  "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-flow": "^6.23.0",
-    "flow-bin": "^0.81.0"
+  "scripts": {
+    "start": "node il2cp.js start"
   },
   "bundledDependencies": [
     "express",

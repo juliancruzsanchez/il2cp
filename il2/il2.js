@@ -15,18 +15,12 @@ module.exports = {
       stripShellPrompt: true,
       irs: "\r\n"
     })
+
   },
   setDifficulty(diff) {
     this.server.send(`difficulty ${diff}\r`)
   },
-  getUsers() {
-    this.server.send("user\r", {}, (a, b) => {
-      let fo = String(b).replace(`\\u0020`, "").replace("<consoleN>", "").replace(/<([1-9]*)>/i, "").split("\\n\r\n")
-      fo.pop()
-      console.log(fo)
-      return fo;
-    })
-  },
+
   loadMission(mis) {
     this.send("mission END")
     this.send("mission LOAD " + mis)

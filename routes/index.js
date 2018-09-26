@@ -84,5 +84,6 @@ module.exports = {
     app.get("/setup", (req, res) => {
       res.render("setup")
     })
+    app.get("/banUser/")
   }
 }

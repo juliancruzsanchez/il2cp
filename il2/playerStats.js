@@ -1,15 +1,13 @@
-class Plane {
-  name = String
-}
-class Pilot {
-  plane = Plane
-  getScore() {
-    return null;
+let il2 = require("./il2");
+
+class Player {
+  constructor (name) {
+    this.name = name;
   }
-}
-class Player extends Pilot {
-  name = String
-  ip = Array
-  kills = Number
-  flies = Number
-}
+  
+  getScore(){
+il2.server.send('user')  }}
+
+
+let a = new Player("A");
+a.getScore()
