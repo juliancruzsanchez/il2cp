@@ -1,64 +1,64 @@
-let fs = require('fs');
-let config = require("./configParser");
+let fs = require('fs')
+let config = require("./configParser")
 
 function parseMission(name) {
   let f1 = fs.readFileSync(config.path + '/missions/'+name+'.mis', 'utf8')
-    .toString();
+    .toString()
   let desc = fs.readFileSync(config.path + 'missions/'+name+'.properties', 'utf8')
-    .toString();
-  let f2 = " \r\n" + f1;
-  let file = f2.split("\r\n");
+    .toString()
+  let f2 = " \r\n" + f1
+  let file = f2.split("\r\n")
   let p = (l) => {
-    if (file[l].match(/[0-9]+/g) == Array) return file[l].match(/[0-9]+/g)[0];
-    else return file[l].match(/[0-9]+/g);
+    if (file[l].match(/[0-9]+/g) == Array) return file[l].match(/[0-9]+/g)[0]
+    else return file[l].match(/[0-9]+/g)
   }
   let b = (l) => {
-    if (file[l].match(/[0-9]+/g)[0] === 0) return false;
-    else return true;
+    if (file[l].match(/[0-9]+/g)[0] === 0) return false
+    else return true
   }
   let trim = (str) => {
-    return str.replace(/\s+/g, '');
+    return str.replace(/\s+/g, '')
   }
 
   function wing() {
-    let cl = 48;
-    let currentLineInFile = trim(file[cl]);
-    let a = file.indexOf('[' + currentLineInFile + ']');
-    let output = {};
+    let cl = 48
+    let currentLineInFile = trim(file[cl])
+    let a = file.indexOf('[' + currentLineInFile + ']')
+    let output = {}
     while (cl < a) {
-      let a = file.indexOf('[' + currentLineInFile + ']');
-      output[currentLineInFile] = {};
-      output[currentLineInFile].planes = p(a + 1)[0];
+      let a = file.indexOf('[' + currentLineInFile + ']')
+      output[currentLineInFile] = {}
+      output[currentLineInFile].planes = p(a + 1)[0]
       if (trim(file[a + 2])
         .startsWith('Skill0')) {
-        output[currentLineInFile].skill = [];
+        output[currentLineInFile].skill = []
         if (trim(file[a + 2])
-          .startsWith('Skill0')) output[currentLineInFile].skill.push(file[a + 2][9]);
+          .startsWith('Skill0')) output[currentLineInFile].skill.push(file[a + 2][9])
         if (trim(file[a + 3])
-          .startsWith('Skill1')) output[currentLineInFile].skill.push(file[a + 3][9]);
+          .startsWith('Skill1')) output[currentLineInFile].skill.push(file[a + 3][9])
         if (trim(file[a + 4])
-          .startsWith('Skill2')) output[currentLineInFile].skill.push(file[a + 4][9]);
+          .startsWith('Skill2')) output[currentLineInFile].skill.push(file[a + 4][9])
         if (trim(file[a + 5])
-          .startsWith('Skill3')) output[currentLineInFile].skill.push(file[a + 5][9]);
-        output[currentLineInFile].fuel = p(a + 7)[0];
-        output[currentLineInFile].weapons = trim(file[a + 8].replace('weapons ', ' '));
-        output[currentLineInFile].class = trim(file[a + 6].replace('Class air.', ' '));
+          .startsWith('Skill3')) output[currentLineInFile].skill.push(file[a + 5][9])
+        output[currentLineInFile].fuel = p(a + 7)[0]
+        output[currentLineInFile].weapons = trim(file[a + 8].replace('weapons ', ' '))
+        output[currentLineInFile].class = trim(file[a + 6].replace('Class air.', ' '))
       } else {
         if (trim(file[a + 2])
           .startsWith('Skill')) {
-          output[currentLineInFile].class = trim(file[a + 3].replace('Class air.', ' '));
-          output[currentLineInFile].fuel = p(a + 4)[0];
-          output[currentLineInFile].skill = [];
-          output[currentLineInFile].skill.push(file[a + 2][8]);
-          output[currentLineInFile].weapons = trim(file[a + 5].replace('weapons ', ' '));
+          output[currentLineInFile].class = trim(file[a + 3].replace('Class air.', ' '))
+          output[currentLineInFile].fuel = p(a + 4)[0]
+          output[currentLineInFile].skill = []
+          output[currentLineInFile].skill.push(file[a + 2][8])
+          output[currentLineInFile].weapons = trim(file[a + 5].replace('weapons ', ' '))
         }
       }
-      cl = cl + 1;
+      cl = cl + 1
     }
-    return out;
+    return out
   }
   let mis = {
-    desc: ,
+    desc: '',
     season: {
       day: p(11),
       month: p(10),
@@ -116,6 +116,6 @@ function parseMission(name) {
       Searchlight: p(46),
       Ship: p(43),
     },
-  };
+  }
 
 }
