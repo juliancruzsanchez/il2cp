@@ -4,6 +4,7 @@ const AdminCommand = require("./models/AdminCommands").AdminCommand
 module.exports = function commands(input, il2) {
   
     function timeLeftAction() {
+      console.log('a')
       let cm = require("../cycleManager")
       const config = require("../configParser")
       let timeSince = new Date() - cm.getTime()
