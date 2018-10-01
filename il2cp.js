@@ -8,7 +8,7 @@ const fs = require('fs')
 const chalk = require('chalk')
 const co = require('co')
 let file = process.env.APPDATA + "\\IL2 Control Panel\\config.json"
-
+let interval
 function handlebarsInit() {
   app.engine('.hbs', exphbs({
     defaultLayout: 'main',
@@ -50,7 +50,7 @@ let run = () => {
   il2.init()
   const cycle = require("./il2/cycleManager")
   cycle.startCycle()
-  setInterval(() => {
+   interval = setInterval(() => {
     cycle.nextMission()
   }, config.missionInterval * 60 * 1000)
   require('./routes')
@@ -120,3 +120,5 @@ program.command('setup')
   .action(setup)
 
 program.parse(process.argv)
+
+module.exports = {interval}

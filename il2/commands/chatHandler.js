@@ -16,9 +16,11 @@ function commands(input, il2) {
   let timeleft = new uc.UserCommand("tl", timeLeftAction)
   let tl = new uc.UserCommand("timeleft", timeLeftAction)
   let user = input.match("Chat: (.*):")[1]
-
+function getTimeLeft(timeout) {
+  return Math.ceil((timeout._idleStart + timeout._idleTimeout - Date.now()) / 1000)
+}
   function timeLeftAction() {
-    console.log("Command not yet avaliable.")
+    il2.chat(getTimeLeft(require('../../il2cp').interval))
   }
 
   tl.exec(user, input)
@@ -32,12 +34,12 @@ function commands(input, il2) {
 
 module.exports = function (data, server, il2) {
   let input = String(data)
-  if ( input.includes("is complete created")) {
+  if (input.includes("is complete created")) {
     newUser(input, il2)
-  } else if ( input.includes("Chat:") && ! input.includes("Chat: ---") && ! input.includes("Chat: Server")) {
+  } else if (input.includes("Chat:") && !input.includes("Chat: ---") && !input.includes("Chat: Server")) {
     commands(input, il2)
-  } else if ( input.includes("Chat: ---")) {
-    
+  } else if (input.includes("Chat: ---")) {
+
   } else {
 
   }
