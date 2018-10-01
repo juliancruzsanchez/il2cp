@@ -1,3 +1,1 @@
-"# il2cp" 
-"# il2cp" 
-"# il2cp" 
+"# IL2 Control Panel"

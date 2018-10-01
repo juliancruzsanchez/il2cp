@@ -1,5 +1,5 @@
-const il2 = require("./il2.js")
-const fs = require("fs")
+  let il2 = require("./il2.js")
+  let fs = require("fs")
 const config = require("./configParser");
 let currentMission = 0;
 module.exports = {
