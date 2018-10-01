@@ -4,7 +4,6 @@ const config = require("./configParser")
 module.exports = {
   server: new telnet(),
   init() {
-    // Node.emitter.setMaxListeners(30)
     this.server.on("data", (data) => {
       command(data, this.server, this)
     })
