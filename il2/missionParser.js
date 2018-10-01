@@ -116,6 +116,7 @@ function parseMission(name) {
       Searchlight: p(46),
       Ship: p(43),
     },
+    description: desc
   }
-
+return mis;
 }

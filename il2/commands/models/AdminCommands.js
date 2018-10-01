@@ -5,7 +5,13 @@ class AdminCommand {
     this.exec = (user, i) => {
       if (i.includes("." + this.command))
         if (require("../configParser")
-          .admin.indexOf(user) > -1) this.action()
+          .admin !== undefined) {
+          if (require("../configParser")
+            .admin.indexOf(user) > -1) this.action()
+        }
+      else {
+        return
+      }
     }
   }
 }

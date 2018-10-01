@@ -28,6 +28,7 @@ module.exports = {
   },
   send(msg) {
     this.server.send(msg + "\r")
+    console.log(msg)
   },
   chat(msg, player) {
     if (player == undefined) player = "ALL"

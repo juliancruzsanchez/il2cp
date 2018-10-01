@@ -9,6 +9,7 @@ const chalk = require('chalk')
 const co = require('co')
 let file = process.env.APPDATA + "\\IL2 Control Panel\\config.json"
 let interval
+
 function handlebarsInit() {
   app.engine('.hbs', exphbs({
     defaultLayout: 'main',
@@ -49,8 +50,8 @@ let run = () => {
   const il2 = require("./il2/il2")
   il2.init()
   const cycle = require("./il2/cycleManager")
-  cycle.startCycle()
-   interval = setInterval(() => {
+  cycle.startCycle(new Date())
+  interval = setInterval(() => {
     cycle.nextMission()
   }, config.missionInterval * 60 * 1000)
   require('./routes')
@@ -65,7 +66,7 @@ let setup = (cmd, opts) => {
       let prompt = require('co-prompt')
 
       function setConfig(name, dn) {
-        var x = prompt(chalk.bold.green(dn +": "))
+        var x = prompt(chalk.bold.green(dn + ": "))
         console.log(chalk.yellow(`Awesome! ${dn} Saved!\n`))
         config[name] = x
       }
@@ -121,4 +122,6 @@ program.command('setup')
 
 program.parse(process.argv)
 
-module.exports = {interval}
+module.exports = {
+  interval
+}
