@@ -21,6 +21,7 @@ module.exports = {
   },
 
   loadMission(mis) {
+    this.send("ban LOAD ")
     this.chat("Loading " + mis)
     this.send("mission END")
     this.send("mission LOAD " + mis)
@@ -40,5 +41,8 @@ module.exports = {
   },
   
 ban(u) {
-this.send("ban " + u)
+  this.send("ban LOAD")
+this.send("ban ADD NAME " + u.replace('\\n', '').replace('\\', ''))
+this.send("ban SAVE")
+
 }}
