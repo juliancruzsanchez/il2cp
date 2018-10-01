@@ -13,6 +13,4 @@ class AdminCommand {
     }
   }
 }
-module.exports = {
-  AdminCommand
-}
+module.exports = AdminCommand

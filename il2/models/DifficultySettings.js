@@ -71,5 +71,4 @@ class DifficultySettings {
   }
 }
 
-let a = new DifficultySettings("a")
-console.log(a)
+module.exports = DifficultySettings

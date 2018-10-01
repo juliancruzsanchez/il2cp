@@ -9,6 +9,4 @@ class UserCommand {
     }
   }
 }
-module.exports = {
-  UserCommand
-}
+module.exports = UserCommand

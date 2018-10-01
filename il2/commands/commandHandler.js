@@ -1,5 +1,5 @@
-const UserCommand = require("./models/UserCommands").UserCommand
-const AdminCommand = require("./models/AdminCommands").AdminCommand
+const UserCommand = require("./models/UserCommands")
+const AdminCommand = require("./models/AdminCommands")
 
 module.exports = function commands(input, il2) {
 
