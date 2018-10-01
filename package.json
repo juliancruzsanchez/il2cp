@@ -20,6 +20,7 @@
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
     "hashmap": "^2.3.0",
+    "save-on-change": "^1.0.7",
     "telnet-client": "^0.15.8"
   },
   "scripts": {
