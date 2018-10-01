@@ -1,5 +1,5 @@
-let ac = require("./AdminCommands");
-let uc = require("./UserCommands");
+let ac = require("./AdminCommands")
+let uc = require("./UserCommands")
 let newUser = require("./newUsers")
 
 function commands(input, il2) {
@@ -15,7 +15,7 @@ function commands(input, il2) {
   })
   let timeleft = new uc.UserCommand("tl", timeLeftAction)
   let tl = new uc.UserCommand("timeleft", timeLeftAction)
-  let user = input.match("Chat: (.*):")[1];
+  let user = input.match("Chat: (.*):")[1]
 
   function timeLeftAction() {
     console.log("Command not yet avaliable.")
@@ -35,9 +35,9 @@ module.exports = function (data, server, il2) {
   if ( input.includes("is complete created")) {
     newUser(input, il2)
   } else if ( input.includes("Chat:") && ! input.includes("Chat: ---") && ! input.includes("Chat: Server")) {
-    commands(input, il2);
+    commands(input, il2)
   } else if ( input.includes("Chat: ---")) {
-
+    
   } else {
 
   }
