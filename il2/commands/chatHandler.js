@@ -5,6 +5,7 @@ let newUser = require("./newUsers")
 
 module.exports = function (data, server, il2) {
   let input = String(data)
+  console.log(input)
   let isValidCommand = input.includes(": <") || input.includes(".");
   if (input.includes("is complete created")) {
     newUser.add(input, il2)

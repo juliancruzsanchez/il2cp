@@ -26,6 +26,7 @@ module.exports = function commands(input, il2) {
     let user = input.match("Chat: (.*):")[1]
   
     new AdminCommand("nextmap", () => { require("../cycleManager").nextMission() }).exec(user,input)
+    new AdminCommand('ban', () => {require("../il2").ban(input.match(".ban (.*)")[1])}).exec(user, input)
     new UserCommand("obj<blue", () => {}).exec(user,input)
     new UserCommand("obj<red", () => {}).exec(user,input)
     new UserCommand("help", help).exec(user, input)
