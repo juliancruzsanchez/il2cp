@@ -23,7 +23,8 @@ module.exports = {
       fs.readdir(config.path + "Missions/", function (err, files) {
         response.render('missions', {
           missions: files.filter(str => {
-            return str.includes(".mis");
+            if (config.missionsInCycle.includes(str)) return false;
+           else return str.includes(".mis");
           }),
           inCycle: config.missionsInCycle
         })
@@ -60,11 +61,7 @@ module.exports = {
     })
     app.get('/players', (request, response) => {
       response.render('players', {
-        player: [{
-          status: "No",
-          username: "veltro",
-          ip: "75.71.64.136"
-        }]
+        player: require("../il2/commands/newUsers.js").users
       })
     });
     app.get("/addMission:a", function (req, res) {
