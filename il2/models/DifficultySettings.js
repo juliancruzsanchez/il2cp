@@ -1,5 +1,5 @@
 var HashMap = require("hashmap")
-
+var fs = require("fs")
 class DifficultySettings {
   constructor(name) {
     this.serialVersionUID = 1
@@ -48,5 +48,6 @@ class DifficultySettings {
     this.settings.set("No_GroundPadlock", true)
   }
 }
+fs.writeFileSync('diff', new DifficultySettings("s").settings.forEach(function (value, key) {return key}))
 
 module.exports = DifficultySettings
