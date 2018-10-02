@@ -47,28 +47,6 @@ class DifficultySettings {
     this.settings.set("SharedKillsHistorical", true)
     this.settings.set("No_GroundPadlock", true)
   }
-
-  getDifficultyName() {
-    return this.difficultyName
-  }
-
-  setDifficultyName(difficultyName) {
-    this.difficultyName = difficultyName
-  }
-
-  getSettings() {
-    return this.settings
-  }
-
-  setSettings(settings) {
-    this.settings = settings
-  }
-
-  setSetting(setting, value) {
-    if (this.settings.containsKey(setting)) {
-      this.settings.set(setting, value)
-    }
-  }
 }
 
 module.exports = DifficultySettings
