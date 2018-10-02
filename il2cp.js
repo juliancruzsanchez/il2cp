@@ -8,7 +8,6 @@ const fs = require("fs")
 const chalk = require("chalk")
 const co = require("co")
 const prompt = require("co-prompt")
-const playerStats = require("./il2/playerStats")
 let file = process.env.APPDATA + "\\IL2 Control Panel\\config.json"
 
 function handlebarsInit() {
@@ -26,23 +25,24 @@ function handlebarsInit() {
 }
 
 function test(cb) {
-  try {
-    stats = fs.lstatSync(process.env.APPDATA + "\\IL2 Control Panel")
-    if (stats.isDirectory()) {
-      try {
-        if (fs.lstatSync(file).isFile()) {
+    if (fs.existsSync(process.env.APPDATA + "\\IL2 Control Panel")) {
+        if (fs.existsSync(file) ){
           cb()
-        }
-      } catch (e) {
-        console.log(e)
-        fs.copyFileSync("./config.json", file)
-        test(() => {})
-      }
-    }
-  } catch (e) {
-    console.log(e)
+        }else {      
+        fs.writeFileSync(file, `{
+          "ip": "192.168.1.3",
+          "path": "C:/il2/",
+          "port": "2003",
+          "missionInterval": 60,
+          "missionsInCycle": [],
+          "admin": [
+            "veltro"
+          ]
+        }`)
+        test(cb)}}
+       else  {
     fs.mkdirSync(process.env.APPDATA + "\\IL2 Control Panel")
-    test(() => {})
+    test(cb)
   }
 }
 
