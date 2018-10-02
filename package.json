@@ -24,7 +24,9 @@
     "telnet-client": "^0.15.8"
   },
   "scripts": {
-    "start": "node il2cp.js start"
+    "start": "./il2cp.exe",
+    "prestart": "npm i",
+    "build":"pkg -t node10-win il2cp.js"
   },
   "bundledDependencies": [
     "express",
