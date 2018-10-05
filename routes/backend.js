@@ -37,4 +37,5 @@ module.exports = (app, win) => {
         win.win.hide()
         
     })
+    app.get('/ban/:a')
 }
