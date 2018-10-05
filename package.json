@@ -1,12 +1,15 @@
 {
   "name": "il2cp",
+  "productName": "IL2 Control Panel",
   "version": "1.0.0",
-  "description": "\"# il2cp\"  \"# il2cp\"  \"# il2cp\"",
+  "main": "il2cp.js",
+
+  "description": "IL2 Control Panel",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/juliancruzsanchez/il2cp.git"
   },
-  "author": "",
+  "author": "Julian Sanchez",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/juliancruzsanchez/il2cp/issues"
@@ -24,13 +27,30 @@
     "telnet-client": "^0.15.8"
   },
   "scripts": {
-    "start": "./il2cp.exe",
-    "prestart": "npm i",
-    "build":"pkg -t node10-win il2cp.js"
+    "postinstall": "install-app-deps",
+    "start": "npm install && electron ./app",
+    "pack": "build --dir",
+    "dist": "build"
+  },
+  "build": {
+    "appId": "io.github.juliancruzsanchez.il2cp",
+    "win": {
+      "target": "nsis"
+    },
+    "nsis": {
+      "createDesktopShortcut": "always"
+    }
   },
   "bundledDependencies": [
     "express",
     "express-handlebars",
     "telnet-client"
-  ]
+  ],
+  "devDependencies": {
+    "electron": "^3.0.2",
+    "electron-builder": "^20.28.4",
+    "electron-builder-squirrel-windows": "^20.28.3",
+    "electron-winstaller": "^2.7.0",
+    "electron-wix-msi": "^2.1.1"
+  }
 }

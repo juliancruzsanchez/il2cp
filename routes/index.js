@@ -3,10 +3,24 @@ let config = require("../il2/configParser")
 let p = (l) => {
   return l.replace(/\s+/g, '')
 }
-let cf = process.env.APPDATA + "\\IL2 Control Panel\\config.json"
 module.exports = {
   init(app) {
-    app.get('/', (request, response) => {
+
+    const prefix = "/" + app.get("urlPrefix");
+    app.locals.data = {
+      prefix: prefix,
+      page: ""
+    }
+
+    console.log(prefix)
+    app.get(prefix + '/players', (request, response) => {
+      app.locals.data.page = "Players";
+      response.render('players', {
+        player: require("../il2/commands/newUsers.js").users
+      })
+    })
+    app.get(prefix, (request, response) => {
+      app.locals.data.page = "Admin";
       response.render('home', {
         il2: {
           ip: config.ip,
@@ -14,11 +28,15 @@ module.exports = {
         }
       })
     })
-    app.get('/help', (req, res) => {
+    app.get( '/help', (req, res) => {
+      app.locals.data.page = "Help";
+
       res.render('help')
     })
-    app.get('/missions', (request, response) => {
-      require("fs").readdir(config.path + "Missions/", function(
+    app.get(prefix + '/missions', (request, response) => {
+      app.locals.data.page = "Missions";
+
+      require("fs").readdir(config.path + "Missions/", function (
         err,
         files
       ) {
@@ -31,7 +49,9 @@ module.exports = {
         })
       })
     })
-    app.get('/difficulty', (request, response) => {
+    app.get(prefix + '/difficulty', (request, response) => {
+      app.locals.data.page = "Difficulty";
+
       let d_post = {}
       il2.server.send("difficulty\r", {}, (err, data) => {
         let d_pre = data.split("\\n\r\n")
@@ -51,34 +71,12 @@ module.exports = {
         })
       })
     })
+    app.get(prefix + '/commands', (request, response) => {
+      app.locals.data.page = "Commadnds";
 
-    function arrayRemove(arr, value) {
-      return arr.filter(function (ele) {
-        return ele != value
-      })
-    }
-    app.get('/commands', (request, response) => {
       response.render('commands')
     })
-    app.get('/players', (request, response) => {
-      response.render('players', {
-        player: require("../il2/commands/newUsers.js").users
-      })
-    })
-    app.get("/addMission:a", function (req, res) {
-      if (config.missionsInCycle.indexOf(req.params.a) <= -1) {
-        config.missionsInCycle.push(req.params.a)
-      }
-      res.send(config.missionsInCycle)
-    })
-    app.get("/removeMission:a", function (req, res) {
-      config.missionsInCycle = arrayRemove(config.missionsInCycle, req.params.a)
 
-      res.send(config.missionsInCycle)
-    })
-    app.get("/setup", (req, res) => {
-      res.render("setup")
-    })
-    app.get("/banUser/")
+    require("./backend")(app)
   }
 }

@@ -1,6 +1,9 @@
- html, body {
+@import "./hightlight.css";
+html, body {
     font-family: 'Roboto', 'Helvetica', sans-serif;
   }
+
+
  .jcs-centered-table tr ,  .jcs-centered-table th,  .jcs-centered-table td{
       text-align: left !important;
   }
@@ -16,11 +19,15 @@
   .demo-layout .mdl-layout__header .mdl-layout__drawer-button {
     color: rgba(0, 0, 0, 0.54);
   }
+
   .mdl-layout__drawer .avatar {
     margin-bottom: 16px;
   }
+  body {    -ms-overflow-style: scrollbar;
+    -webkit-app-region:drag;}
   .demo-drawer {
     border: none;
+
   }
   /* iOS Safari specific workaround */
   .demo-drawer .mdl-menu__container {
@@ -44,7 +51,7 @@
     display: -ms-flexbox;
     display: flex;
     -webkit-flex-direction: column;
-        -ms-flex-direction: column;
+      -ms-flex-direction: column;
             flex-direction: column;
     -webkit-justify-content: flex-end;
         -ms-flex-pack: end;
@@ -70,6 +77,7 @@
     -webkit-flex-grow: 1;
         -ms-flex-positive: 1;
             flex-grow: 1;
+            -ms-overflow-style: scrollbar;
   }
   .demo-layout .demo-navigation .mdl-navigation__link {
     display: -webkit-flex !important;
@@ -96,4 +104,13 @@
 
   .demo-content {
     max-width: 1080px;
+  }
+
+  input
+  button,
+  [role="button"],
+  i,.demo-drawer,.demo-navigation,.mdl-navigation__link,.mdl-layout__obfuscator .is-visible,
+  textarea, li, ui,
+  a {
+    -webkit-app-region: no-drag !important;
   }

@@ -7,6 +7,7 @@ module.exports = {
     this.server.on("data", (data) => {
       command(data, this.server, this)
     })
+    try {
     this.server.connect({
       host: config.ip,
       port: config.port,
@@ -14,6 +15,9 @@ module.exports = {
       stripShellPrompt: true,
       irs: "\r\n"
     })
+  } catch {
+    throw Error("Could not connect to server, is another client running?")
+  }
 
   },
   setDifficulty(diff) {
@@ -21,6 +25,7 @@ module.exports = {
   },
 
   loadMission(mis) {
+    this.dotRange(config.dotRange)
     this.send("ban LOAD ")
     this.chat("Loading " + mis)
     this.send("mission END")
@@ -36,8 +41,8 @@ module.exports = {
     this.send(`chat ${msg} TO ${player}`)
   },
   dotRange(opt = {foe: {color, dot, range, type, id, name}, friendly:  {color, dot, range, type, id, name}}) {
-    this.send(`mp_dotrange FOE ${opt.foe.color} ${opt.foe.dot} ${opt.foe.range} ${opt.foe.type} ${opt.foe.id} ${opt.foe.name}`)
-    this.send(`mp_dotrange FRIENDLY ${opt.friendly.color} ${opt.friendly.dot} ${opt.friendly.range} ${opt.friendly.type} ${opt.friendly.id} ${opt.friendly.name}`)
+    this.send(`mp_dotrange FOE COLOR ${opt.foe.color} DOT ${opt.foe.dot} RANGE ${opt.foe.range} TYPE ${opt.foe.type} ID ${opt.foe.id} NAME ${opt.foe.name}`)
+    this.send(`mp_dotrange FRIENDLY COLOR ${opt.friendly.color} DOT ${opt.friendly.dot} RANGE ${opt.friendly.range} TYPE ${opt.friendly.type} ID ${opt.friendly.id} NAME ${opt.friendly.name}`)
   },
   
 ban(u) {

@@ -7,8 +7,24 @@
       <span class="mdl-chip">
         <span class="mdl-chip__text">Online</span>
       </span></div>
-    <div class="mdl-card__actions mdl-card--border">
+    <div class="mdl-card__actions mdl-card--border"></div>
       <a href="/setup" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" data-upgraded=",MaterialButton,MaterialRipple">Edit<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
     </div>
   </div>
-
+<form id="banf">
+  <div class="mdl-textfield mdl-js-textfield">
+    <input class="mdl-textfield__input" type="text" id="un">
+    <label class="mdl-textfield__label" for="un">Number...</label>
+    <span class="mdl-textfield__error">Input is not a number!</span>
+  </div>
+</form>
+<script> $('#banf').on('submit', (function () {
+        console.log('{{this}} clicked');
+        $.ajax({
+          url: '/cmd/ban/'+ $('#un').val,
+          success: function (res) {
+            window.location.reload()
+          }
+        });
+      }))0
+</script>    

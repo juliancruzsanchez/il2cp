@@ -2,9 +2,9 @@ let fs = require('fs')
 let config = require("./configParser")
 
 function parseMission(name) {
-  let f1 = fs.readFileSync(config.path + '/missions/'+name+'.mis', 'utf8')
+  let f1 = fs.readFileSync(config.path + '/missions/' + name + '.mis', 'utf8')
     .toString()
-  let desc = fs.readFileSync(config.path + 'missions/'+name+'.properties', 'utf8')
+  let desc = fs.readFileSync(config.path + 'missions/' + name + '.properties', 'utf8')
     .toString()
   let f2 = " \r\n" + f1
   let file = f2.split("\r\n")
@@ -118,5 +118,5 @@ function parseMission(name) {
     },
     description: desc
   }
-return mis;
+  return mis;
 }
