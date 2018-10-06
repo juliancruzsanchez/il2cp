@@ -1,5 +1,5 @@
 const il2 = require("../il2/il2.js")
-let config = require("../il2/configParser")
+const config = require("../il2/configParser");
 
 let p = (l) => {
     return l.replace(/\s+/g, '')
