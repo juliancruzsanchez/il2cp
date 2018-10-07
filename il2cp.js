@@ -12,7 +12,6 @@ const ElectronTitlebarWindows = require("electron-titlebar-windows");
 const prompt = require("co-prompt");
 const { Menu, Tray, BrowserWindow } = require("electron");
 const eapp = require("electron").app;
-
 let file = process.env.APPDATA + "\\IL2 Control Panel\\config.json";
 process.env["APP_PATH"] = eapp.getAppPath();
 
