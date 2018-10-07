@@ -1,4 +1,4 @@
-export class AdminCommand {
+module.exports = class AdminCommand {
   constructor(command, action) {
     this.command = command;
     this.action = action;
@@ -12,4 +12,4 @@ export class AdminCommand {
         }
     };
   }
-}
+};

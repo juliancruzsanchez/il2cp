@@ -19,6 +19,7 @@
         class="">Need Help?</span></a>
   </nav>
   {{/inline}}
+  
   <!-- == /  INLINE TEMPLATES END == -->
 
   <meta charset="utf-8">
@@ -79,6 +80,43 @@
   <script type="text/javascript">
     window.mdl.autoInit();
   </script>
-</body>
 
+</body>
+<footer>  <script>       window.onload = function() {
+
+    const ElectronTitlebarWindows = require("electron-titlebar-windows");
+    const { remote } = require('electron');
+    /** Options */
+    let titlebar = new ElectronTitlebarWindows({
+      darkMode: 'true'
+    });
+    /**
+     * DOM
+     */
+    titlebar.appendTo();
+
+    /** Event#close */
+    titlebar.on('close', () => {
+        console.info('close');
+        remote.getCurrentWindow().close();
+    });
+    /** Event#fullscreen */
+    titlebar.on('fullscreen', () => {
+        console.info('fullscreen');
+        remote.getCurrentWindow().setFullScreen(true);
+    });
+    /** Event#minimize */
+    titlebar.on('minimize', () => {
+        console.info('minimize');
+        remote.getCurrentWindow().minimize();
+    });
+    /** Event#maximize */
+    titlebar.on('maximize', () => {
+        console.info('maximize');
+        remote.getCurrentWindow().setFullScreen(false);
+        remote.getCurrentWindow().maximize();
+    });
+    document.getElementById('titlebar').style.zIndex(100)
+}
+</script></footer>
 </html>

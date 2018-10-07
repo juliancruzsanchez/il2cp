@@ -7,13 +7,12 @@ const app = express();
 const fs = require("fs");
 const chalk = require("chalk");
 const co = require("co");
-const ElectronTitlebarWindows = require("electron-titlebar-windows");
 
 const prompt = require("co-prompt");
 const { Menu, Tray, BrowserWindow } = require("electron");
 const eapp = require("electron").app;
 let file = process.env.APPDATA + "\\IL2 Control Panel\\config.json";
-process.env["APP_PATH"] = eapp.getAppPath();
+process.env.APP_PATH = eapp.getAppPath();
 
 function handlebarsInit() {
   app.engine(
@@ -77,8 +76,7 @@ function run() {
       minHeight: 400,
       minWidth: 600,
       height: 800,
-      titleBarStyle: "hidden",
-      frame: true,
+      frame: false,
       icon: path.join(eapp.getAppPath(), "download.png"),
       autoHideMenuBar: true
     });
@@ -88,8 +86,7 @@ function run() {
       tray
     };
     win.loadURL("http://localhost:21122/admin");
-    const titlebar = new ElectronTitlebarWindows();
-    titlebar.appendTo();
+    
   });
 }
 
