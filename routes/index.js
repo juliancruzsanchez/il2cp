@@ -18,6 +18,7 @@ module.exports = {
         player: require("../il2/commands/newUsers.js").users
       });
     });
+
     app.get(prefix, (request, response) => {
       app.locals.data.page = "Admin";
       response.render("home", {
@@ -27,11 +28,13 @@ module.exports = {
         }
       });
     });
+
     app.get("/help", (req, res) => {
       app.locals.data.page = "Help";
 
       res.render("help");
     });
+
     app.get(prefix + "/missions", (request, response) => {
       app.locals.data.page = "Missions";
 
@@ -45,6 +48,7 @@ module.exports = {
         });
       });
     });
+
     app.get(prefix + "/difficulty", (request, response) => {
       app.locals.data.page = "Difficulty";
 
@@ -71,6 +75,7 @@ module.exports = {
         console.log(Object.keys(d_post));
       });
     });
+
     app.get(prefix + "/commands", (request, response) => {
       app.locals.data.page = "Commadnds";
 
