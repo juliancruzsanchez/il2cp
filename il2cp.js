@@ -7,6 +7,8 @@ const app = express();
 const fs = require("fs");
 const chalk = require("chalk");
 const co = require("co");
+const ElectronTitlebarWindows = require("electron-titlebar-windows");
+
 const prompt = require("co-prompt");
 const { Menu, Tray, BrowserWindow } = require("electron");
 const eapp = require("electron").app;
@@ -87,7 +89,6 @@ function run() {
       tray
     };
     win.loadURL("http://localhost:21122/admin");
-    const ElectronTitlebarWindows = require("electron-titlebar-windows");
     const titlebar = new ElectronTitlebarWindows();
     titlebar.appendTo();
   });
