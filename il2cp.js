@@ -5,9 +5,6 @@ const express = require("express")
 const exphbs = require("express-handlebars")
 const app = express()
 const fs = require("fs")
-const chalk = require("chalk")
-const co = require("co")
-const prompt = require("co-prompt")
 const {
   Menu,
   Tray,
@@ -73,7 +70,6 @@ function run() {
   app.listen(21122)
 
   eapp.on("ready", () => {
-
     const tray = new Tray('download.png')
     let win = new BrowserWindow({
       minHeight: 400,
@@ -83,7 +79,6 @@ function run() {
       frame: true,
       icon: path.join(eapp.getAppPath(), "download.png"),
       autoHideMenuBar: true
-
     })
 
     module.exports = {
@@ -98,6 +93,9 @@ function run() {
   })
 }
 
+
+// CLI 
+/*
 var program = require("commander")
 program.version("0.1.0")
 program
@@ -163,5 +161,7 @@ program
       })
     })
   })
+*/
+
 
 test(run)

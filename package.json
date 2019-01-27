@@ -3,7 +3,6 @@
   "productName": "IL2 Control Panel",
   "version": "1.0.0",
   "main": "il2cp.js",
-
   "description": "IL2 Control Panel",
   "repository": {
     "type": "git",

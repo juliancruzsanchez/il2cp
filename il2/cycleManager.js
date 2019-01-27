@@ -39,5 +39,8 @@
     },
     getTime() {
       return time
+    },
+    setTime(newTime) {
+      time = newTime;
     }
   }

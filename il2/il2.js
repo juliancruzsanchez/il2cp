@@ -1,6 +1,7 @@
 const telnet = require('telnet-client')
 const command = require("./commands/chatHandler")
 const config = require("./configParser")
+const missionParser = require('./missionParser')
 module.exports = {
   server: new telnet(),
   init() {
@@ -25,6 +26,7 @@ module.exports = {
   },
 
   loadMission(mis) {
+    console.log(missionParser(mis))
     this.dotRange(config.dotRange)
     this.send("ban LOAD ")
     this.chat("Loading " + mis)
@@ -47,7 +49,7 @@ module.exports = {
   
 ban(u) {
   this.send("ban LOAD")
-this.send("ban ADD NAME " + u.replace('\\n', '').replace('\\', ''))
-this.send("ban SAVE")
+  this.send("ban ADD NAME " + u.replace('\\n', '').replace('\\', ''))
+  this.send("ban SAVE")
 
 }}
