@@ -1,0 +1,539 @@
+<!doctype html>
+
+
+<html lang="en">
+
+<head>
+  <!-- == INLINE TEMPLATES == -->
+
+  <!-- == /  INLINE TEMPLATES END == -->
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <title>IL2 Control Panel | Missions</title>
+
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="icon" sizes="192x192" href="images/android-desktop.png">
+
+  <!-- Add to homescreen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="IL2CP">
+  <link rel="apple-touch-icon-precomposed" href="images/ios-desktop.png">
+  <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+  <meta name="msapplication-TileColor" content="#3372DF">
+
+  <link rel="stylesheet" href="/stylesheets/material.indigo-pink.min.css" />
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="stylesheet" href="/stylesheets/roboto.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+</head>
+
+<body><!-- Insert this line above script imports  -->
+<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+
+<!-- normal script imports etc  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="/js/highlight.js"></script>
+
+<!-- Insert this line after script imports -->
+<script>if (window.module) module = window.module;</script>
+  <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header ">
+    <header class="demo-header mdl-layout__header   mdl-color--blue-grey-800">
+      <div class="mdl-layout__header-row">
+        <span class="mdl-layout-title">IL2 Control Panel</span>
+        <div class="mdl-layout-spacer"></div>
+        <a href= "/exit"><!-- Colored mini FAB button 
+<button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+  <i class="material-icons">close</i>
+</button></a>-->
+    </header>
+    <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
+      <header class="demo-drawer-header">
+      </header>
+        <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
+          <a class="mdl-navigation__link" href="/admin/"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Home</a>
+          <a class="mdl-navigation__link" href="/admin/players"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">account_box</i>Players</a>
+          <a class="mdl-navigation__link" href="/admin/missions"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">explore</i>Missions</a>
+          <a class="mdl-navigation__link" href="/admin/difficulty"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">security</i>Difficulty</a>
+          <a class="mdl-navigation__link" href="/admin/commands"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">code</i>Commands</a>
+      
+          <div class="mdl-layout-spacer"></div>
+          <a class="mdl-navigation__link" href="/help"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i><span
+              class="">Need Help?</span></a>
+        </nav>
+    </div>
+    <main class="mdl-layout__content">
+      <div style="margin: 2.5%; width:95%;"> 
+        <div id="demo-toast-example" class="mdl-js-snackbar mdl-snackbar">
+  <div class="mdl-snackbar__text"></div>
+  <button class="mdl-snackbar__action" type="button"></button>
+</div>
+<h4>In Cycle</h4>
+<table class="mdl-data-table mdl-data-table__cell--non-numeric jcs-centered-table">
+  <thead>
+    <tr>
+      <th>Mission Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="mdl-data-table__cell--non-numeric">Kursk43.mis</td>
+      <td>
+        <button class="mdl-button mdl-js-button mdl-button--raised" id="0-rem">Remove From Cycle</button>&nbsp&nbsp&nbsp&nbsp
+        <button class="mdl-button mdl-js-button mdl-button--raised" id="0x-run">Run</button></td>
+
+    </tr>
+    <script>
+      $('#0-rem').click(function () {
+        console.log('Kursk43.mis clicked');
+        $.ajax({
+          url: '/removeMission/Kursk43.mis',
+          success: function (res) {
+            window.location.reload()
+          }
+        });
+      });
+      $('#0x-run').click(function () {
+        console.log('Kursk43.mis clicked');
+        $.ajax({
+          url: '/missionLoader/Kursk43.mis ',
+          success: function (res) {
+            var snackbarContainer = document.querySelector('#demo-toast-example');
+            var data = {
+              message: `Mission Kursk43.mis Loaded Successfully`
+            };
+            snackbarContainer.MaterialSnackbar.showSnackbar(data);
+          }
+        })
+      })
+    </script>
+
+    <tr>
+      <td class="mdl-data-table__cell--non-numeric">Anzio.mis</td>
+      <td>
+        <button class="mdl-button mdl-js-button mdl-button--raised" id="1-rem">Remove From Cycle</button>&nbsp&nbsp&nbsp&nbsp
+        <button class="mdl-button mdl-js-button mdl-button--raised" id="1x-run">Run</button></td>
+
+    </tr>
+    <script>
+      $('#1-rem').click(function () {
+        console.log('Anzio.mis clicked');
+        $.ajax({
+          url: '/removeMission/Anzio.mis',
+          success: function (res) {
+            window.location.reload()
+          }
+        });
+      });
+      $('#1x-run').click(function () {
+        console.log('Anzio.mis clicked');
+        $.ajax({
+          url: '/missionLoader/Anzio.mis ',
+          success: function (res) {
+            var snackbarContainer = document.querySelector('#demo-toast-example');
+            var data = {
+              message: `Mission Anzio.mis Loaded Successfully`
+            };
+            snackbarContainer.MaterialSnackbar.showSnackbar(data);
+          }
+        })
+      })
+    </script>
+
+    <tr>
+      <td class="mdl-data-table__cell--non-numeric">Fighter Aces 4.mis</td>
+      <td>
+        <button class="mdl-button mdl-js-button mdl-button--raised" id="2-rem">Remove From Cycle</button>&nbsp&nbsp&nbsp&nbsp
+        <button class="mdl-button mdl-js-button mdl-button--raised" id="2x-run">Run</button></td>
+
+    </tr>
+    <script>
+      $('#2-rem').click(function () {
+        console.log('Fighter Aces 4.mis clicked');
+        $.ajax({
+          url: '/removeMission/Fighter Aces 4.mis',
+          success: function (res) {
+            window.location.reload()
+          }
+        });
+      });
+      $('#2x-run').click(function () {
+        console.log('Fighter Aces 4.mis clicked');
+        $.ajax({
+          url: '/missionLoader/Fighter Aces 4.mis ',
+          success: function (res) {
+            var snackbarContainer = document.querySelector('#demo-toast-example');
+            var data = {
+              message: `Mission Fighter Aces 4.mis Loaded Successfully`
+            };
+            snackbarContainer.MaterialSnackbar.showSnackbar(data);
+          }
+        })
+      })
+    </script>
+  </tbody>
+</table><br>
+<h4>All Missions</h4>
+<table class="mdl-data-table mdl-data-table__cell--non-numeric jcs-centered-table">
+  <thead>
+    <tr>
+      <th>Mission Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="mdl-data-table__cell--non-numeric">Battle of Britain.mis</td>
+      <td>
+        <button class="mdl-button mdl-js-button mdl-button--raised" id="0-add">Add to Cycle</button>&nbsp&nbsp&nbsp&nbsp <button
+          class="mdl-button mdl-js-button mdl-button--raised" id="0-run">Run</button></td>
+    </tr>
+    <script>
+      $('#0-add').click(function () {
+        console.log('Battle of Britain.mis clicked');
+        $.ajax({
+          url: '/addMission/Battle of Britain.mis',
+          success: function (res) {
+            window.location.reload()
+          }
+        });
+      });
+      $('#0-run').click(function () {
+        console.log('Battle of Britain.mis clicked');
+        $.ajax({
+          url: '/missionLoader/Battle of Britain.mis ',
+          success: function (res) {
+            var snackbarContainer = document.querySelector('#demo-toast-example');
+            var data = {
+              message: `Mission Battle of Britain.mis Loaded Successfully`
+            };
+            snackbarContainer.MaterialSnackbar.showSnackbar(data);
+          }
+        })
+      });
+    </script>
+
+    <tr>
+      <td class="mdl-data-table__cell--non-numeric">Convoy.mis</td>
+      <td>
+        <button class="mdl-button mdl-js-button mdl-button--raised" id="1-add">Add to Cycle</button>&nbsp&nbsp&nbsp&nbsp <button
+          class="mdl-button mdl-js-button mdl-button--raised" id="1-run">Run</button></td>
+    </tr>
+    <script>
+      $('#1-add').click(function () {
+        console.log('Convoy.mis clicked');
+        $.ajax({
+          url: '/addMission/Convoy.mis',
+          success: function (res) {
+            window.location.reload()
+          }
+        });
+      });
+      $('#1-run').click(function () {
+        console.log('Convoy.mis clicked');
+        $.ajax({
+          url: '/missionLoader/Convoy.mis ',
+          success: function (res) {
+            var snackbarContainer = document.querySelector('#demo-toast-example');
+            var data = {
+              message: `Mission Convoy.mis Loaded Successfully`
+            };
+            snackbarContainer.MaterialSnackbar.showSnackbar(data);
+          }
+        })
+      });
+    </script>
+
+    <tr>
+      <td class="mdl-data-table__cell--non-numeric">ElAlamein.mis</td>
+      <td>
+        <button class="mdl-button mdl-js-button mdl-button--raised" id="2-add">Add to Cycle</button>&nbsp&nbsp&nbsp&nbsp <button
+          class="mdl-button mdl-js-button mdl-button--raised" id="2-run">Run</button></td>
+    </tr>
+    <script>
+      $('#2-add').click(function () {
+        console.log('ElAlamein.mis clicked');
+        $.ajax({
+          url: '/addMission/ElAlamein.mis',
+          success: function (res) {
+            window.location.reload()
+          }
+        });
+      });
+      $('#2-run').click(function () {
+        console.log('ElAlamein.mis clicked');
+        $.ajax({
+          url: '/missionLoader/ElAlamein.mis ',
+          success: function (res) {
+            var snackbarContainer = document.querySelector('#demo-toast-example');
+            var data = {
+              message: `Mission ElAlamein.mis Loaded Successfully`
+            };
+            snackbarContainer.MaterialSnackbar.showSnackbar(data);
+          }
+        })
+      });
+    </script>
+
+    <tr>
+      <td class="mdl-data-table__cell--non-numeric">Kuban43.mis</td>
+      <td>
+        <button class="mdl-button mdl-js-button mdl-button--raised" id="3-add">Add to Cycle</button>&nbsp&nbsp&nbsp&nbsp <button
+          class="mdl-button mdl-js-button mdl-button--raised" id="3-run">Run</button></td>
+    </tr>
+    <script>
+      $('#3-add').click(function () {
+        console.log('Kuban43.mis clicked');
+        $.ajax({
+          url: '/addMission/Kuban43.mis',
+          success: function (res) {
+            window.location.reload()
+          }
+        });
+      });
+      $('#3-run').click(function () {
+        console.log('Kuban43.mis clicked');
+        $.ajax({
+          url: '/missionLoader/Kuban43.mis ',
+          success: function (res) {
+            var snackbarContainer = document.querySelector('#demo-toast-example');
+            var data = {
+              message: `Mission Kuban43.mis Loaded Successfully`
+            };
+            snackbarContainer.MaterialSnackbar.showSnackbar(data);
+          }
+        })
+      });
+    </script>
+
+    <tr>
+      <td class="mdl-data-table__cell--non-numeric">Kursk.mis</td>
+      <td>
+        <button class="mdl-button mdl-js-button mdl-button--raised" id="4-add">Add to Cycle</button>&nbsp&nbsp&nbsp&nbsp <button
+          class="mdl-button mdl-js-button mdl-button--raised" id="4-run">Run</button></td>
+    </tr>
+    <script>
+      $('#4-add').click(function () {
+        console.log('Kursk.mis clicked');
+        $.ajax({
+          url: '/addMission/Kursk.mis',
+          success: function (res) {
+            window.location.reload()
+          }
+        });
+      });
+      $('#4-run').click(function () {
+        console.log('Kursk.mis clicked');
+        $.ajax({
+          url: '/missionLoader/Kursk.mis ',
+          success: function (res) {
+            var snackbarContainer = document.querySelector('#demo-toast-example');
+            var data = {
+              message: `Mission Kursk.mis Loaded Successfully`
+            };
+            snackbarContainer.MaterialSnackbar.showSnackbar(data);
+          }
+        })
+      });
+    </script>
+
+    <tr>
+      <td class="mdl-data-table__cell--non-numeric">Moscow412.mis</td>
+      <td>
+        <button class="mdl-button mdl-js-button mdl-button--raised" id="5-add">Add to Cycle</button>&nbsp&nbsp&nbsp&nbsp <button
+          class="mdl-button mdl-js-button mdl-button--raised" id="5-run">Run</button></td>
+    </tr>
+    <script>
+      $('#5-add').click(function () {
+        console.log('Moscow412.mis clicked');
+        $.ajax({
+          url: '/addMission/Moscow412.mis',
+          success: function (res) {
+            window.location.reload()
+          }
+        });
+      });
+      $('#5-run').click(function () {
+        console.log('Moscow412.mis clicked');
+        $.ajax({
+          url: '/missionLoader/Moscow412.mis ',
+          success: function (res) {
+            var snackbarContainer = document.querySelector('#demo-toast-example');
+            var data = {
+              message: `Mission Moscow412.mis Loaded Successfully`
+            };
+            snackbarContainer.MaterialSnackbar.showSnackbar(data);
+          }
+        })
+      });
+    </script>
+
+    <tr>
+      <td class="mdl-data-table__cell--non-numeric">Odessa41.mis</td>
+      <td>
+        <button class="mdl-button mdl-js-button mdl-button--raised" id="6-add">Add to Cycle</button>&nbsp&nbsp&nbsp&nbsp <button
+          class="mdl-button mdl-js-button mdl-button--raised" id="6-run">Run</button></td>
+    </tr>
+    <script>
+      $('#6-add').click(function () {
+        console.log('Odessa41.mis clicked');
+        $.ajax({
+          url: '/addMission/Odessa41.mis',
+          success: function (res) {
+            window.location.reload()
+          }
+        });
+      });
+      $('#6-run').click(function () {
+        console.log('Odessa41.mis clicked');
+        $.ajax({
+          url: '/missionLoader/Odessa41.mis ',
+          success: function (res) {
+            var snackbarContainer = document.querySelector('#demo-toast-example');
+            var data = {
+              message: `Mission Odessa41.mis Loaded Successfully`
+            };
+            snackbarContainer.MaterialSnackbar.showSnackbar(data);
+          }
+        })
+      });
+    </script>
+
+    <tr>
+      <td class="mdl-data-table__cell--non-numeric">Pumas.mis</td>
+      <td>
+        <button class="mdl-button mdl-js-button mdl-button--raised" id="7-add">Add to Cycle</button>&nbsp&nbsp&nbsp&nbsp <button
+          class="mdl-button mdl-js-button mdl-button--raised" id="7-run">Run</button></td>
+    </tr>
+    <script>
+      $('#7-add').click(function () {
+        console.log('Pumas.mis clicked');
+        $.ajax({
+          url: '/addMission/Pumas.mis',
+          success: function (res) {
+            window.location.reload()
+          }
+        });
+      });
+      $('#7-run').click(function () {
+        console.log('Pumas.mis clicked');
+        $.ajax({
+          url: '/missionLoader/Pumas.mis ',
+          success: function (res) {
+            var snackbarContainer = document.querySelector('#demo-toast-example');
+            var data = {
+              message: `Mission Pumas.mis Loaded Successfully`
+            };
+            snackbarContainer.MaterialSnackbar.showSnackbar(data);
+          }
+        })
+      });
+    </script>
+
+    <tr>
+      <td class="mdl-data-table__cell--non-numeric">Stalingrad.mis</td>
+      <td>
+        <button class="mdl-button mdl-js-button mdl-button--raised" id="8-add">Add to Cycle</button>&nbsp&nbsp&nbsp&nbsp <button
+          class="mdl-button mdl-js-button mdl-button--raised" id="8-run">Run</button></td>
+    </tr>
+    <script>
+      $('#8-add').click(function () {
+        console.log('Stalingrad.mis clicked');
+        $.ajax({
+          url: '/addMission/Stalingrad.mis',
+          success: function (res) {
+            window.location.reload()
+          }
+        });
+      });
+      $('#8-run').click(function () {
+        console.log('Stalingrad.mis clicked');
+        $.ajax({
+          url: '/missionLoader/Stalingrad.mis ',
+          success: function (res) {
+            var snackbarContainer = document.querySelector('#demo-toast-example');
+            var data = {
+              message: `Mission Stalingrad.mis Loaded Successfully`
+            };
+            snackbarContainer.MaterialSnackbar.showSnackbar(data);
+          }
+        })
+      });
+    </script>
+
+    <tr>
+      <td class="mdl-data-table__cell--non-numeric">Tobruk.mis</td>
+      <td>
+        <button class="mdl-button mdl-js-button mdl-button--raised" id="9-add">Add to Cycle</button>&nbsp&nbsp&nbsp&nbsp <button
+          class="mdl-button mdl-js-button mdl-button--raised" id="9-run">Run</button></td>
+    </tr>
+    <script>
+      $('#9-add').click(function () {
+        console.log('Tobruk.mis clicked');
+        $.ajax({
+          url: '/addMission/Tobruk.mis',
+          success: function (res) {
+            window.location.reload()
+          }
+        });
+      });
+      $('#9-run').click(function () {
+        console.log('Tobruk.mis clicked');
+        $.ajax({
+          url: '/missionLoader/Tobruk.mis ',
+          success: function (res) {
+            var snackbarContainer = document.querySelector('#demo-toast-example');
+            var data = {
+              message: `Mission Tobruk.mis Loaded Successfully`
+            };
+            snackbarContainer.MaterialSnackbar.showSnackbar(data);
+          }
+        })
+      });
+    </script>
+
+    <tr>
+      <td class="mdl-data-table__cell--non-numeric">Tunisia.mis</td>
+      <td>
+        <button class="mdl-button mdl-js-button mdl-button--raised" id="10-add">Add to Cycle</button>&nbsp&nbsp&nbsp&nbsp <button
+          class="mdl-button mdl-js-button mdl-button--raised" id="10-run">Run</button></td>
+    </tr>
+    <script>
+      $('#10-add').click(function () {
+        console.log('Tunisia.mis clicked');
+        $.ajax({
+          url: '/addMission/Tunisia.mis',
+          success: function (res) {
+            window.location.reload()
+          }
+        });
+      });
+      $('#10-run').click(function () {
+        console.log('Tunisia.mis clicked');
+        $.ajax({
+          url: '/missionLoader/Tunisia.mis ',
+          success: function (res) {
+            var snackbarContainer = document.querySelector('#demo-toast-example');
+            var data = {
+              message: `Mission Tunisia.mis Loaded Successfully`
+            };
+            snackbarContainer.MaterialSnackbar.showSnackbar(data);
+          }
+        })
+      });
+    </script>
+  </tbody>
+</table>
+      </div>
+    </main>
+  </div>
+
+  <script src="/js/material.min.js"></script>
+  <script type="text/javascript">
+    window.mdl.autoInit();
+  </script>
+</body>
+
+</html>

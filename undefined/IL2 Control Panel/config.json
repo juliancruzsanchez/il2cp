@@ -1,0 +1,33 @@
+{
+  "ip": "192.168.1.4",
+  "path": "C:/il2/",
+  "port": "2003",
+  "missionInterval": 60,
+  "missionsInCycle": [
+    "Kursk43.mis",
+    "Anzio.mis",
+    "Fighter Aces 4.mis"
+  ],
+  "admin": [
+    "veltro"
+  ],
+  "dotRange": {
+    "friendly": {
+      "color": 4,
+      "dot": 10,
+      "range": 4,
+      "type": 2,
+      "id": 4,
+      "name": 3
+    },
+    "foe": {
+      "color": 4,
+      "dot": 10,
+      "range": 4,
+      "type": 2,
+      "id": 3,
+      "name": 2
+    }
+  },
+  "difficulty": 553224434943
+}
