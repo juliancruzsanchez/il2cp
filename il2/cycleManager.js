@@ -44,3 +44,4 @@
       time = newTime;
     }
   }
+};
