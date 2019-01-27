@@ -1,7 +1,7 @@
 var request = require("request");
 var fs = require('fs')
 var config = require("./configParser")
-module.exports = function (fn) {
+module.exports = function (fn, cb) {
 let file = fs.createReadStream(`${config.path}/Missions/${fn}`)
 let a;
 var options = {
@@ -12,9 +12,5 @@ var options = {
   }
 };
 
- request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-a =  JSON.parse(body);
-})
-return a;
+ request(options, cb)
 }

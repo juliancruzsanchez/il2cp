@@ -26,7 +26,10 @@ module.exports = {
   },
 
   loadMission(mis) {
-    console.log(missionParser(mis))
+ missionParser(mis, function (error, response, body) {
+  if (error) throw new Error(error);
+  console.log(JSON.parse(body))
+})
     this.dotRange(config.dotRange)
     this.send("ban LOAD ")
     this.chat("Loading " + mis)
